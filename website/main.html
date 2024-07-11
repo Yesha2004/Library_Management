@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #d76868;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .navbar h1 {
+            color: white;
+            margin: 0;
+        }
+
+        .navbar p {
+            color: #000000;
+            margin: 0;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #821212;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #243ac9;
+            text-align: center;
+        }
+
+        form {
+            display:center;
+            flex-direction: column;
+        }
+
+        form label, form input, form select, form button {
+            margin: 10px 0;
+        }
+
+        form input, form select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 96%;
+        }
+
+        form button {
+            padding: 10px;
+            border: none;
+            background-color: #1286d3;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        form button:hover {
+            background-color: #0b344f;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="http://pluspng.com/img-png/stanford-university-logo-vector-png-stanford-university-logo-vector-300.png" alt="Institute Logo">
+            <div>
+                <h1>Standford University</h1>
+                <p>Learn from Expert,Be and Expert!</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="main.html">Home</a>
+            <a href="record.html">Record</a>
+            <a href="#">About Us</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Library Form</h2>
+        <form id="libraryForm" action="submit_form.php" method="post">
+            <label for="sl_no">Sl. No.:</label>
+            <input type="number" id="sl_no" name="sl_no" required>
+            
+            <label for="student_name">Name of the Student:</label>
+            <input type="text" id="student_name" name="student_name" required>
+            
+            <label for="usn">USN:</label>
+            <input type="text" id="usn" name="usn" required>
+            
+            <label for="book_borrowed">Book Borrowed:</label>
+            <input type="text" id="book_borrowed" name="book_borrowed" required>
+            
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('libraryForm').addEventListener('submit', function(event) {
+            // Validation for Sl. No.
+            const slNo = document.getElementById('sl_no');
+            if (!slNo.value || isNaN(slNo.value) || slNo.value <= 0) {
+                alert('Please enter a valid Sl. No.');
+                slNo.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // Validation for Name of the Student
+            const studentName = document.getElementById('student_name');
+            if (!studentName.value.trim()) {
+                alert('Please enter the name of the student.');
+                studentName.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // Validation for USN
+            const usn = document.getElementById('usn');
+            if (!usn.value.trim()) {
+                alert('Please enter the USN.');
+                usn.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // Validation for Book Borrowed
+            const bookBorrowed = document.getElementById('book_borrowed');
+            if (!bookBorrowed.value.trim()) {
+                alert('Please enter the book borrowed.');
+                bookBorrowed.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // Validation for Date
+            const date = document.getElementById('date');
+            if (!date.value) {
+                alert('Please select a date.');
+                date.focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // If all validations pass
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>
